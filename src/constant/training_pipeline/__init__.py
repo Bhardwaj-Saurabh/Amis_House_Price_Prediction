@@ -5,6 +5,7 @@ SAVED_MODEL_DIR =os.path.join("saved_models")
 TARGET_COLUMN = "SalePrice"
 PIPELINE_NAME: str = "housing_price"
 ARTIFACT_NAME: str = "artifact"
+DATA_DIR: str = os.path.join("data")
 FILE_NAME: str = "train.csv"
 
 TRAIN_FILE_NAME: str = "train_data.csv"
@@ -19,7 +20,6 @@ SCHEMA_DROP_COLS = "drop_columns"
 """
 Data Ingestion related constant start with DATA_INGESTION VAR NAME
 """
-DATA_INGESTION_COLLECTION_NAME: str = "amis_housing"
 DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
 DATA_INGESTION_INGESTED_DIR: str = "ingested"
