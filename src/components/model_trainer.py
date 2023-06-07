@@ -67,7 +67,7 @@ class ModelTrainer:
             #Overfitting and Underfitting
             diff = abs(regression_train_metric.model_r2_score-regression_test_metric.model_r2_score)
             
-            if diff>self.model_trainer_config.overfitting_underfitting_threshold:
+            if diff > self.model_trainer_config.overfitting_underfitting_threshold:
                 raise Exception("Model is not good try to do more experimentation.")
 
             preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
@@ -85,5 +85,6 @@ class ModelTrainer:
             test_metric_artifact=regression_test_metric)
             logging.info(f"Model trainer artifact: {model_trainer_artifact}")
             return model_trainer_artifact
+        
         except Exception as e:
             raise CustomException(e,sys)
