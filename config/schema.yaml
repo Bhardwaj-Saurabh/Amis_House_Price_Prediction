@@ -130,6 +130,9 @@ features:
 
 alpha: 0.001
 
+# to set the random seed
+random_state: 0
+
 # categorical variables with NA in train set
 categorical_vars_with_na_frequent:
   - BsmtQual

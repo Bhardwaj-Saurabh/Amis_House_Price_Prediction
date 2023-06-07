@@ -1,6 +1,8 @@
 pandas
-numpy
+numpy==1.24.3
 seaborn
 scikit-learn
 scipy
+dill
+feature-engine
 -e .

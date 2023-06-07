@@ -34,7 +34,7 @@ class DataIngestion:
             dataframe = HousingData(data_path=data_dir).read_data()
             dataframe = dataframe.drop('Id', axis = 1)
             dataframe.rename(columns = self._schema_config['variables_to_rename'], inplace = True)
-
+            
             feature_store_file_path = self.data_ingestion_config.feature_store_file_path            
 
             #creating folder
