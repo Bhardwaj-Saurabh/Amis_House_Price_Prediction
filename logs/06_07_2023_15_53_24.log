@@ -1,0 +1,55 @@
+[ 2023-06-07 15:53:26,236 ] [INFO] [root] [24] - Starting data ingestion
+[ 2023-06-07 15:53:26,250 ] [INFO] [root] [30] - Exporting data from mongodb to feature store
+[ 2023-06-07 15:53:26,250 ] [INFO] [root] [27] - Start Reading dataset
+[ 2023-06-07 15:53:26,312 ] [INFO] [root] [58] - Performed train test split on the dataframe
+[ 2023-06-07 15:53:26,312 ] [INFO] [root] [60] - Exited split_data_as_train_test method of Data_Ingestion class
+[ 2023-06-07 15:53:26,312 ] [INFO] [root] [68] - Exporting train and test file path.
+[ 2023-06-07 15:53:26,336 ] [INFO] [root] [78] - Exported train and test file path.
+[ 2023-06-07 15:53:26,336 ] [INFO] [root] [27] - Data ingestion completed and artifact: DataIngestionArtifact(trained_file_path='artifact/06_07_2023_15_53_24/data_ingestion/ingested/train_data.csv', test_file_path='artifact/06_07_2023_15_53_24/data_ingestion/ingested/test_data.csv')
+[ 2023-06-07 15:53:26,336 ] [INFO] [root] [34] - Starting data validation
+[ 2023-06-07 15:53:26,350 ] [INFO] [root] [27] - Start Reading dataset
+[ 2023-06-07 15:53:26,370 ] [INFO] [root] [27] - Start Reading dataset
+[ 2023-06-07 15:53:26,380 ] [INFO] [root] [49] - Required number of columns: 80
+[ 2023-06-07 15:53:26,380 ] [INFO] [root] [50] - Data frame has columns: 80
+[ 2023-06-07 15:53:26,380 ] [INFO] [root] [49] - Required number of columns: 80
+[ 2023-06-07 15:53:26,380 ] [INFO] [root] [50] - Data frame has columns: 80
+[ 2023-06-07 15:53:26,404 ] [INFO] [root] [121] - Exporting Valid train and test file path.
+[ 2023-06-07 15:53:26,415 ] [INFO] [root] [140] - Data validation artifact: DataValidationArtifact(validation_status=False, valid_train_file_path='artifact/06_07_2023_15_53_24/data_validation/validated/train_data.csv', valid_test_file_path='artifact/06_07_2023_15_53_24/data_validation/validated/test_data.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='artifact/06_07_2023_15_53_24/data_validation/drift_report/report.yaml')
+[ 2023-06-07 15:53:26,416 ] [INFO] [root] [39] - Data Validation completed and artifact: DataValidationArtifact(validation_status=False, valid_train_file_path='artifact/06_07_2023_15_53_24/data_validation/validated/train_data.csv', valid_test_file_path='artifact/06_07_2023_15_53_24/data_validation/validated/test_data.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='artifact/06_07_2023_15_53_24/data_validation/drift_report/report.yaml')
+[ 2023-06-07 15:53:26,429 ] [INFO] [root] [27] - Start Reading dataset
+[ 2023-06-07 15:53:26,440 ] [INFO] [root] [27] - Start Reading dataset
+[ 2023-06-07 15:53:26,596 ] [INFO] [root] [65] - Entered the save_object method of MainUtils class
+[ 2023-06-07 15:53:26,599 ] [INFO] [root] [69] - Exited the save_object method of MainUtils class
+[ 2023-06-07 15:53:26,599 ] [INFO] [root] [191] - Data transformation artifact: DataTransformationArtifact(transformed_object_file_path='artifact/06_07_2023_15_53_24/data_transformation/transformed_object/preprocessor.pkl', transformed_train_file_path='artifact/06_07_2023_15_53_24/data_transformation/transformed/train_data.npy', transformed_test_file_path='artifact/06_07_2023_15_53_24/data_transformation/transformed/test_data.npy')
+[ 2023-06-07 15:53:26,628 ] [ERROR] [root] [15] - An error of type [CustomException] occurred in the file [/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/pipeline/training_pipeline.py] at line number [82]. Error message: An error of type [CustomException] occurred in the file [/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/pipeline/training_pipeline.py] at line number [58]. Error message: An error of type [AttributeError] occurred in the file [/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/components/model_trainer.py] at line number [60]. Error message: 'RegressionMetricArtifact' object has no attribute 'r2_score'
+Traceback (most recent call last):
+  File "/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/components/model_trainer.py", line 60, in initiate_model_trainer
+    if regression_train_metric.r2_score<=self.model_trainer_config.expected_accuracy:
+AttributeError: 'RegressionMetricArtifact' object has no attribute 'r2_score'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/pipeline/training_pipeline.py", line 58, in start_model_trainer
+    model_trainer_artifact = model_trainer.initiate_model_trainer()
+  File "/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/components/model_trainer.py", line 89, in initiate_model_trainer
+    raise CustomException(e,sys)
+src.exception.CustomException: An error of type [AttributeError] occurred in the file [/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/components/model_trainer.py] at line number [60]. Error message: 'RegressionMetricArtifact' object has no attribute 'r2_score'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/pipeline/training_pipeline.py", line 82, in run_pipeline
+    model_trainer_artifact = self.start_model_trainer(data_transformation_artifact)
+  File "/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/pipeline/training_pipeline.py", line 61, in start_model_trainer
+    raise CustomException(e, sys)
+src.exception.CustomException: An error of type [CustomException] occurred in the file [/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/pipeline/training_pipeline.py] at line number [58]. Error message: An error of type [AttributeError] occurred in the file [/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/components/model_trainer.py] at line number [60]. Error message: 'RegressionMetricArtifact' object has no attribute 'r2_score'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main.py", line 13, in main
+    training_pipeline.run_pipeline()
+  File "/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/pipeline/training_pipeline.py", line 84, in run_pipeline
+    raise CustomException(e, sys)
+src.exception.CustomException: An error of type [CustomException] occurred in the file [/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/pipeline/training_pipeline.py] at line number [82]. Error message: An error of type [CustomException] occurred in the file [/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/pipeline/training_pipeline.py] at line number [58]. Error message: An error of type [AttributeError] occurred in the file [/Users/saurabhbhardwaj/Documents/Amis_House_Price_Prediction/src/components/model_trainer.py] at line number [60]. Error message: 'RegressionMetricArtifact' object has no attribute 'r2_score'

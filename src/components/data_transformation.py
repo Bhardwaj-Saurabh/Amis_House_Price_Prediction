@@ -153,7 +153,7 @@ class DataTransformation:
             # add MSSubClass to the list of categorical variables
             train_df['MSSubClass'] = train_df['MSSubClass'].astype('O')
             test_df = HousingData(self.data_validation_artifact.valid_test_file_path).read_data()
-            test_df['MSSubClass'] = train_df['MSSubClass'].astype('O')
+            test_df['MSSubClass'] = test_df['MSSubClass'].astype('O')
             preprocessor = self.get_data_transformer_object()
 
 
@@ -172,8 +172,6 @@ class DataTransformation:
             preprocessor_object = preprocessor.fit(input_feature_train_df, target_feature_train_df)
             transformed_input_train_feature = preprocessor_object.transform(input_feature_train_df)
             transformed_input_test_feature =preprocessor_object.transform(input_feature_test_df)
-
-            
 
             train_arr = np.c_[transformed_input_train_feature, target_feature_train_df]
             test_arr = np.c_[ transformed_input_test_feature, target_feature_test_df]

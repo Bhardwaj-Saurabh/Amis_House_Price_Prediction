@@ -204,7 +204,7 @@ qual_mappings:
   NA: 0
 
 exposure_mappings:
-  No: 1
+  'No': 1
   Mn: 2
   Av: 3
   Gd: 4

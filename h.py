@@ -1,6 +1,7 @@
-path = "artifact/06_07_2023_12_21_28/data_validation/validated/train_data.csv"
+path = "artifact/06_07_2023_13_51_20/data_validation/validated/train_data.csv"
 
 import pandas as pd
+import numpy as np
 
 df = pd.read_csv(path)
 print(df.head())
@@ -130,6 +131,31 @@ preprocessor = Pipeline(
 train_df = df.drop(columns=[TARGET_COLUMN], axis=1)
 train_df['MSSubClass'] = train_df['MSSubClass'].astype('O')
 test_df = df[TARGET_COLUMN]
-print(train_df.isna().sum())
+print(train_df.dtypes)
 
-#preprocessor.fit(train_df, test_df)
+# r = CategoricalImputer(
+#             imputation_method="frequent",
+#             variables=schema_config["categorical_vars_with_na_frequent"]
+#         )
+
+# print(train_df.isna().sum())
+# r.fit(train_df, test_df)
+preprocessor.fit(train_df, test_df)
+
+# j = pp.Mapper(
+#             variables=schema_config["exposure_vars"],
+#             mappings=schema_config["exposure_mappings"],
+#         )
+columns = train_df.columns
+
+# rd = pd.DataFrame(r.transform(train_df), columns=columns)
+# print(rd.head)
+
+# j.fit(rd, test_df)
+# jf = pd.DataFrame(j.transform(train_df))
+# print(jf.isna().sum())
+
+train_df = pd.DataFrame(preprocessor.transform(train_df), columns=columns)
+print(train_df.head())
+
+print(train_df.isna().sum())
